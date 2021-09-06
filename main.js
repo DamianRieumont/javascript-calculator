@@ -6,9 +6,13 @@ const numbers = document.querySelectorAll('.number');
 
 numbers.forEach(number => {
     number.addEventListener('click', (e) => {
-        input.value = input.value + e.target.innerText;
+        addNumber(e);
     });
 });
+
+function addNumber(e) {
+    input.value = input.value.concat(e.target.innerText);
+}
 
 //add an operator to the input
 const operators = document.querySelectorAll('.operator');
@@ -23,7 +27,7 @@ const operatorsList = {
 operators.forEach(operator => {
     operator.addEventListener('click', (e) => {
 
-        if (input.value == '') {
+        if (input.value == '') { //if the input is empty
             input.value = '0' + e.target.getAttribute('value');
         } else {
             if (operatorsList[input.value[input.value.length - 1]] || input.value[input.value.length - 1] == '.') //if the last elemennt in the input is an operator or a dot, its is replced
@@ -69,3 +73,39 @@ dot.addEventListener('click', (e) => {
         isDecimal = true;
     }
 });
+
+//control input by keyboard
+const allowedKeys = {
+    '1': 'number',
+    '2': 'number',
+    '3': 'number',
+    '4': 'number',
+    '5': 'number',
+    '6': 'number',
+    '7': 'number',
+    '8': 'number',
+    '9': 'number',
+    '0': 'number',
+    '(': 'number',
+    ')': 'number',
+    '+': 'operator',
+    '-': 'operator',
+    '/': 'operator',
+    '*': 'operator',
+    '.': 'dot',
+    '=': 'equal'
+}
+input.addEventListener("input", function(e) {
+    console.log(allowedKeys[e.data])
+
+    if (allowedKeys[e.data] === 'number') {
+
+    } else if (allowedKeys[e.data] === 'operator') {
+
+    } else if (allowedKeys[e.data] === 'dot') {
+
+    } else if (allowedKeys[e.data] === 'equal') {
+
+    }
+
+})
