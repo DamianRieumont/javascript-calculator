@@ -37,19 +37,32 @@ const allowedKeys = {
     '/': 'operator',
     '*': 'operator',
     '.': 'dot',
+    'Backspace': 'Backspace',
     '=': 'equal'
 }
-input.addEventListener("input", function(e) {
+input.addEventListener("keypress", function(e) {
     console.log(e)
 
-    if (allowedKeys[e.data] === 'number') {
 
-    } else if (allowedKeys[e.data] === 'operator') {
+});
 
-    } else if (allowedKeys[e.data] === 'dot') {
+input.onkeydown = (e) => {
 
-    } else if (allowedKeys[e.data] === 'equal') {
+    if (allowedKeys[e.key] === 'number') {
+        add.number(e.key); //add a number to the input
+    } else if (allowedKeys[e.key] === 'operator') {
+        add.operator(e.key); //add an operator to the input
+    } else if (allowedKeys[e.key] === 'dot') {
+        add.dot(); //Add a dot '.'
+    } else if (allowedKeys[e.key] === 'Backspace') {
+        add.deleteLast();
+    } else if (allowedKeys[e.key] === 'equal') {
 
     }
 
-})
+    if (e.key === "Backspace") {
+
+        e.preventDefault();
+    }
+    e.preventDefault();
+};
