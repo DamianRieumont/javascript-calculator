@@ -1,4 +1,4 @@
-import * as add from './add.js';
+import * as add from './modules/add.js';
 
 document.addEventListener('click', (e) => {
 
@@ -30,8 +30,8 @@ const allowedKeys = {
     '8': 'number',
     '9': 'number',
     '0': 'number',
-    '(': 'number',
-    ')': 'number',
+    /*'(': 'number',
+    ')': 'number',*/
     '+': 'operator',
     '-': 'operator',
     '/': 'operator',
@@ -40,11 +40,6 @@ const allowedKeys = {
     'Backspace': 'Backspace',
     '=': 'equal'
 }
-input.addEventListener("keypress", function(e) {
-    console.log(e)
-
-
-});
 
 input.onkeydown = (e) => {
 
@@ -59,10 +54,6 @@ input.onkeydown = (e) => {
     } else if (allowedKeys[e.key] === 'equal') {
 
     }
-
-    if (e.key === "Backspace") {
-
-        e.preventDefault();
-    }
     e.preventDefault();
+
 };
