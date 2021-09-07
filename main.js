@@ -1,4 +1,5 @@
 import * as add from './modules/add.js';
+import { resolve } from './modules/resolve.js';
 
 document.addEventListener('click', (e) => {
 
@@ -13,6 +14,8 @@ document.addEventListener('click', (e) => {
         add.deleteAll(); //Delete all input
     } else if (classList.contains('dot')) {
         add.dot(); //Add a dot '.'
+    } else if (classList.contains('equal')) {
+        resolve(document.querySelector('#text-area').value); //Add a dot '.'
     }
 
 });
