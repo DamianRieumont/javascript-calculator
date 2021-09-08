@@ -1,4 +1,4 @@
-class Queue {
+export class Queue {
     constructor(...items) {
         //initialize the items in queue
         this._items = []
@@ -31,5 +31,9 @@ class Queue {
     isEmpty() {
         //find whether the queue is empty or no
         return this._items.length === 0
+    }
+
+    print() {
+        console.log(this._items);
     }
 }

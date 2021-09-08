@@ -1,4 +1,4 @@
-class Stack {
+export class Stack {
     constructor(...items) {
         this._items = []
 
@@ -35,6 +35,10 @@ class Stack {
     isEmpty() {
         // return whether the stack is empty or not
         return this._items.length == 0
+    }
+
+    print() {
+        console.log(this._items);
     }
 
 }
