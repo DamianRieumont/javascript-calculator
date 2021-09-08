@@ -1,3 +1,2 @@
-# calculator-server
-a simple calculator web app with server interactions 
-#in development
+# calculator-shunting-yard
+Calculator web app with shunting yard algorithm solution and a very powerful responsive design
