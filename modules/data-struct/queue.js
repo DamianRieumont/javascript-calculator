@@ -3,7 +3,7 @@ export class Queue {
         //initialize the items in queue
         this._items = []
             // enqueuing the items passed to the constructor
-        this.enqueue(...items)
+        this.enqueue(items)
     }
 
     enqueue(...items) {
