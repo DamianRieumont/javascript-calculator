@@ -1,14 +1,14 @@
 export class Queue {
-    constructor(...items) {
+    constructor(item) {
         //initialize the items in queue
         this._items = []
             // enqueuing the items passed to the constructor
-        this.enqueue(items)
+        this.enqueue(item)
     }
 
-    enqueue(...items) {
-        //push items into the queue
-        items.forEach(item => this._items.push(item))
+    enqueue(item) {
+        //push item into the queue
+        this._items.push(item);
         return this._items;
     }
 

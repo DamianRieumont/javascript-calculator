@@ -1,15 +1,12 @@
 export class Stack {
-    constructor(...items) {
+    constructor(item) {
         this._items = []
-
-        if (items.length > 0)
-            items.forEach(item => this._items.push(item))
-
+        this._items.push(item);
     }
 
-    push(...items) {
+    push(item) {
         //push item to the stack
-        items.forEach(item => this._items.push(item))
+        this._items.push(item);
         return this._items;
 
     }
