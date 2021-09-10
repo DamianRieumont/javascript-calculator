@@ -10,12 +10,9 @@ export class Stack {
 
     }
 
-    pop(count = 0) {
+    pop() {
         //pull out the topmost item (last item) from stack
-        if (count === 0)
-            return this._items.pop()
-        else
-            return this._items.splice(-count, count)
+        return this._items.pop()
     }
 
     peek() {

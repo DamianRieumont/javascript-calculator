@@ -10,10 +10,11 @@ export class Queue {
         return this._items;
     }
 
-    dequeue(count = 1) {
+    dequeue() {
         //pull out the first item from the queue
-        this._items.splice(0, count);
-        return this._items;
+        let result = this._items[0];
+        this._items.splice(0, 1);
+        return result;
     }
 
     peek() {
