@@ -1,5 +1,4 @@
 import * as add from './modules/add.js';
-import { resolve } from './modules/resolve.js';
 
 //using the webpage calculator buttons
 document.addEventListener('click', (e) => {
@@ -16,7 +15,9 @@ document.addEventListener('click', (e) => {
     } else if (classList.contains('dot')) {
         add.dot(); //Add a dot '.'
     } else if (classList.contains('equal')) {
-        document.querySelector('#text-area').value = resolve(document.querySelector('#text-area').value); //resolve the input
+        add.processInput(); //resolve the input
+    } else if (classList.contains('negative')) {
+
     }
 
 });

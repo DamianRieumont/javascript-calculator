@@ -1,3 +1,5 @@
+import { resolve } from './resolve.js';
+
 const input = document.querySelector('#text-area');
 let isDecimal = false;
 const operatorsList = {
@@ -46,4 +48,8 @@ export function dot() {
         input.value = input.value + '.';
         isDecimal = true;
     }
+}
+
+export function processInput() {
+    input.value = resolve(input.value);
 }

@@ -52,9 +52,10 @@ function infixToPosfix(input) { //using the shunting yard algorithm
 
     while (!inputQueue.isEmpty() && !error) { //loop the queue
         let token = inputQueue.dequeue();
+        console.log(lastToken)
         if (isNumber(token)) { //verify if the token is a number
             currentNum += token;
-        } else if (token == '-' && (isOperator(lastToken) || lastToken == '(')) { //know if is a negative num
+        } else if (token == '-' && (isOperator(lastToken) || lastToken == '(' || lastToken === undefined)) { //know if is a negative num
             currentNum = '-';
         } else if (token == '.') {
             if (isNumber(lastToken)) {
