@@ -34,4 +34,8 @@ export class Stack {
         console.log(this._items);
     }
 
+    toArray() {
+        return this._items;
+    }
+
 }

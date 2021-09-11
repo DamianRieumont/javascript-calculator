@@ -35,4 +35,9 @@ export class Queue {
     print() {
         console.log(this._items);
     }
+
+    toArray() {
+        return this._items;
+    }
+
 }
