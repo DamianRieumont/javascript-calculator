@@ -53,3 +53,7 @@ export function dot() {
 export function processInput() {
     input.value = resolve(input.value);
 }
+
+export function negativeInput() {
+    input.value = input.value + '-1*';
+}

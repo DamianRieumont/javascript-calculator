@@ -17,7 +17,7 @@ document.addEventListener('click', (e) => {
     } else if (classList.contains('equal')) {
         add.processInput(); //resolve the input
     } else if (classList.contains('negative')) {
-
+        add.negativeInput();
     }
 
 });
@@ -58,7 +58,7 @@ input.onkeydown = (e) => {
     } else if (allowedKeys[e.key] === 'Backspace') {
         add.deleteLast();
     } else if (allowedKeys[e.key] === 'equal' || allowedKeys[e.key] === 'Enter') {
-        document.querySelector('#text-area').value = resolve(document.querySelector('#text-area').value); //resolve the input
+        add.processInput(); //resolve the input
     }
     e.preventDefault();
 
