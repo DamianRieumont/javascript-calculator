@@ -19,9 +19,17 @@ function isOperator(token) {
 export function resolve(input) {
 
     let posfix = infixToPosfix(input);
+    let output;
 
-    console.log(posfix.toArray())
-    return posfix.toString();
+    if (posfix instanceof Queue) { //isnt an error
+        output = resolveRPN(posfix);
+        if (isNaN(output)) {
+            output = "syntax error"
+        }
+    } else
+        output = posfix;
+
+    return output;
 }
 
 function infixToPosfix(input) { //using the shunting yard algorithm
@@ -56,13 +64,15 @@ function infixToPosfix(input) { //using the shunting yard algorithm
                 let error = true;
             }
         } else {
-            outputQueue.enqueue(currentNum); //store de current num string
-            currentNum = ''; //clear the stored current num
+            if (currentNum != '') {
+                outputQueue.enqueue(currentNum); //store de current num string
+                currentNum = ''; //clear the stored current num
+            }
             if (isOperator(token)) {
                 if (opStack.isEmpty()) {
                     opStack.push(token);
                 } else {
-                    while (!opStack.isEmpty() && operators[opStack.peek()] >= token) {
+                    while (!opStack.isEmpty() && operators[opStack.peek()] >= operators[token]) {
                         outputQueue.enqueue(opStack.pop());
                     }
                     opStack.push(token);
@@ -70,7 +80,7 @@ function infixToPosfix(input) { //using the shunting yard algorithm
             } else if (token == '(') {
                 opStack.push(token);
             } else if (token == ')') {
-                while (!opStack.isEmpty() && opStack.peek() !== ')') {
+                while (!opStack.isEmpty() && opStack.peek() !== '(') {
                     outputQueue.enqueue(opStack.pop());
                 }
                 if (opStack.isEmpty()) {
@@ -99,4 +109,35 @@ function infixToPosfix(input) { //using the shunting yard algorithm
 
     return result;
 
+}
+
+function resolveRPN(posfix) { //resolve Reverse Polish Notation
+    let result = new Stack();
+    while (!posfix.isEmpty()) {
+        let token = posfix.dequeue();
+        if (isNumber(token)) {
+            result.push(token)
+        } else {
+            let rightOp = Number.parseFloat(result.pop()); //right operand
+            let leftOp = Number.parseFloat(result.pop()); //left operand
+
+            switch (token) {
+                case '-':
+                    result.push(leftOp - rightOp);
+                    break;
+                case '+':
+                    result.push(leftOp + rightOp);
+                    break;
+                case '*':
+                    result.push(leftOp * rightOp);
+                    break;
+                case '/':
+                    result.push(leftOp / rightOp);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    return result.toArray()
 }

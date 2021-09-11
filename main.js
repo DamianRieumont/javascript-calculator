@@ -16,7 +16,7 @@ document.addEventListener('click', (e) => {
     } else if (classList.contains('dot')) {
         add.dot(); //Add a dot '.'
     } else if (classList.contains('equal')) {
-        document.querySelector('#text-area').value = resolve(document.querySelector('#text-area').value); //Add a dot '.'
+        document.querySelector('#text-area').value = resolve(document.querySelector('#text-area').value); //resolve the input
     }
 
 });
@@ -42,12 +42,12 @@ const allowedKeys = {
     '*': 'operator',
     '.': 'dot',
     'Backspace': 'Backspace',
-    '=': 'equal'
+    '=': 'equal',
+    'Enter': 'Enter'
 }
 
 //using the keyboard
 input.onkeydown = (e) => {
-
     if (allowedKeys[e.key] === 'number') {
         add.number(e.key); //add a number to the input
     } else if (allowedKeys[e.key] === 'operator') {
@@ -56,8 +56,8 @@ input.onkeydown = (e) => {
         add.dot(); //Add a dot '.'
     } else if (allowedKeys[e.key] === 'Backspace') {
         add.deleteLast();
-    } else if (allowedKeys[e.key] === 'equal') {
-
+    } else if (allowedKeys[e.key] === 'equal' || allowedKeys[e.key] === 'Enter') {
+        document.querySelector('#text-area').value = resolve(document.querySelector('#text-area').value); //resolve the input
     }
     e.preventDefault();
 
