@@ -1,6 +1,7 @@
 import * as add from './modules/add.js';
 import { resolve } from './modules/resolve.js';
 
+//using the webpage calculator buttons
 document.addEventListener('click', (e) => {
 
     const classList = e.target.classList;
@@ -15,7 +16,7 @@ document.addEventListener('click', (e) => {
     } else if (classList.contains('dot')) {
         add.dot(); //Add a dot '.'
     } else if (classList.contains('equal')) {
-        resolve(document.querySelector('#text-area').value); //Add a dot '.'
+        document.querySelector('#text-area').value = resolve(document.querySelector('#text-area').value); //Add a dot '.'
     }
 
 });
@@ -33,8 +34,8 @@ const allowedKeys = {
     '8': 'number',
     '9': 'number',
     '0': 'number',
-    /*'(': 'number',
-    ')': 'number',*/
+    '(': 'number',
+    ')': 'number',
     '+': 'operator',
     '-': 'operator',
     '/': 'operator',
@@ -44,6 +45,7 @@ const allowedKeys = {
     '=': 'equal'
 }
 
+//using the keyboard
 input.onkeydown = (e) => {
 
     if (allowedKeys[e.key] === 'number') {
